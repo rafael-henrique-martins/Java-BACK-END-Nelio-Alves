@@ -13,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Categoria implements Serializable {
+public class Produto implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -22,11 +22,8 @@ public class Categoria implements Serializable {
 
     private String nome;
 
-    @ManyToMany
-    @JoinTable(name = "PRODUTO_CATEGORIA", joinColumns = @JoinColumn(name = "produto_id"),
-    inverseJoinColumns = @JoinColumn(name = "categoria_id"))
-    private List<Produto> produtos = new ArrayList<>();
+    private Double preco;
 
-
-
+    @ManyToMany(mappedBy = "categorias")
+    private List<Categoria> categorias = new ArrayList<>();
 }
