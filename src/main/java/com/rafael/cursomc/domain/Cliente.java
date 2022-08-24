@@ -1,5 +1,6 @@
 package com.rafael.cursomc.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.rafael.cursomc.domain.enums.TipoCliente;
 import lombok.*;
 
@@ -34,13 +35,14 @@ public class Cliente implements Serializable {
     private Integer tipo;  // TipoCliente
 
     @OneToMany(mappedBy = "cliente")
+    @JsonManagedReference
     private List<Endereco> enderecos = new ArrayList<>();
 
     @ElementCollection
     @CollectionTable(name = "TELEFONE")
     private Set<String> telefones = new HashSet<>();
 
-    public TipoCliente getTipo() throws IllegalAccessException {
+    public TipoCliente getTipo() {
         return TipoCliente.toEnum(tipo);
     }
 
