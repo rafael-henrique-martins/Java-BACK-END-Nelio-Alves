@@ -1,5 +1,6 @@
 package com.rafael.cursomc.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import javax.persistence.*;
@@ -23,6 +24,7 @@ public class Categoria implements Serializable {
     private String nome;
 
     @ManyToMany
+    @JsonManagedReference
     @JoinTable(name = "PRODUTO_CATEGORIA", joinColumns = @JoinColumn(name = "produto_id"),
     inverseJoinColumns = @JoinColumn(name = "categoria_id"))
     private List<Produto> produtos = new ArrayList<>();
