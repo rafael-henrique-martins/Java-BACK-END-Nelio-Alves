@@ -33,17 +33,18 @@ public class Cliente implements Serializable {
 
     private Integer tipo;  // TipoCliente
 
-    @ManyToOne
-    @JoinColumn(name= "endereco_id")
+    @OneToMany(mappedBy = "cliente")
     private List<Endereco> enderecos = new ArrayList<>();
 
+    @ElementCollection
+    @CollectionTable(name = "TELEFONE")
     private Set<String> telefones = new HashSet<>();
 
     public TipoCliente getTipo() throws IllegalAccessException {
         return TipoCliente.toEnum(tipo);
     }
 
-    public TipoCliente setTipo(TipoCliente tipo){
+    public void setTipo(TipoCliente tipo) {
         this.tipo = tipo.getCod();
     }
 }
