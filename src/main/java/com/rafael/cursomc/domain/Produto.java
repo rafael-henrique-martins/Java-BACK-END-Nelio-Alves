@@ -1,6 +1,5 @@
 package com.rafael.cursomc.domain;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
 
 import javax.persistence.*;
@@ -25,7 +24,9 @@ public class Produto implements Serializable {
 
     private Double preco;
 
-    @ManyToMany(mappedBy = "categorias")
-    @JsonBackReference
+    @ManyToMany
+//    @JsonManagedReference
+    @JoinTable(name = "PRODUTO_CATEGORIA", joinColumns = @JoinColumn(name = "produto_id"),
+            inverseJoinColumns = @JoinColumn(name = "categoria_id"))
     private List<Categoria> categorias = new ArrayList<>();
 }

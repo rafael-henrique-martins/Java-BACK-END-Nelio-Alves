@@ -9,7 +9,8 @@ import java.io.Serializable;
 @Entity
 @Getter
 @Setter
-@ToString@EqualsAndHashCode
+@ToString
+@EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -26,4 +27,5 @@ public class Cidade implements Serializable {
     @JsonManagedReference
     @JoinColumn(name= "estado_id")
     private Estado estado;
+
 }

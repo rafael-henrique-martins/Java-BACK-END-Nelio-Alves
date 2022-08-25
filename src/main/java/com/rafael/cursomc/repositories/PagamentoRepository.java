@@ -1,9 +1,9 @@
 package com.rafael.cursomc.repositories;
 
-import com.rafael.cursomc.domain.Cliente;
+import com.rafael.cursomc.domain.Pagamento;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ClienteRepository extends JpaRepository<Cliente, Integer>{
+public interface PagamentoRepository extends JpaRepository<Pagamento, Integer> {
 }
